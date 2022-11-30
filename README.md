@@ -42,19 +42,33 @@ The toolbar is fully customizable and you can add, remove or reorder buttons. Yo
 ```vue
 <v-tiptap
   v-model="value"
-  :toolbar="['bold', 'italic', '|', 'h1', 'p', '>', '#mybutton']"
+  :toolbar="['bold', 'italic', 'color', '|', 'left', 'right', '|', 'h1', 'h2', 'h3', 'p', '>', 'clear', '#emoji','#mybutton']"
 >
-    <template #mybutton="{ editor }">
+     <template #mybutton="{ editor }">
         <v-btn icon small title="Clear Content" @click="editor.commands.clearContent()">
             <v-icon>mdi-delete-circle-outline</v-icon>
         </v-btn>
     </template>
+    <template #emoji="{ editor }">
+        <v-btn icon small title="Emoji" @click="editor.commands.insertContent('😀')">
+            <v-icon>mdi-emoticon-outline</v-icon>
+        </v-btn>
+    </template>
 </v-tiptap>
+<script>
+import { VTiptap } from "@peepi/vuetify-tiptap";
+ export default{
+  name:'YourComponent',
+  components: {
+    VTiptap
+  }
+ }
+</script>
 ```
 
-> ⚠️ This project uses Vue 2 and Vuetify 2. We plan to upgrade to Vue 3 as soon as Vuetify supports it.
+> ⚠️ This project uses Typescript, Vue 2.6 and Vuetify 2.6. Requires 3.26.1 of core-js etc. (Check the package.json to compare with your own and make sure they are the same numbers!)
 
-## Instalation
+## Installation
 
 First, install the package using npm or yarn.
 
